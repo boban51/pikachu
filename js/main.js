@@ -1,11 +1,11 @@
-!function(){
+! function () {
   var duration = 50
-  $('.actions').on('click', 'button', function(e){
+  $('.actions').on('click', 'button', function (e) {
     let $button = $(e.currentTarget) // button
     let speed = $button.attr('data-speed')
     $button.addClass('active')
       .siblings('.active').removeClass('active')
-    switch(speed){
+    switch (speed) {
       case 'slow':
         duration = 100
         break
@@ -17,19 +17,20 @@
         break
     }
   })
-  function writeCode(prefix, code, fn){
+
+  function writeCode(prefix, code, fn) {
     let container = document.querySelector('#code')
     let styleTag = document.querySelector('#styleTag')
     let n = 0
     let id
-    id = setTimeout(function run(){
-      n+=1
-      container.innerHTML = code.substring(0,n)
-      styleTag.innerHTML = code.substring(0,n)
+    id = setTimeout(function run() {
+      n += 1
+      container.innerHTML = code.substring(0, n)
+      styleTag.innerHTML = code.substring(0, n)
       container.scrollTop = container.scrollHeight
-      if(n < code.length){
+      if (n < code.length) {
         id = setTimeout(run, duration)
-      }else{
+      } else {
         fn && fn.call()
       }
     }, duration)
@@ -82,14 +83,14 @@
   border: 2px solid #000;
 }
 /*
- * 左眼在左边（废话）
+ * 左眼
  */
 .eye.left{
   right: 50%;
   margin-right: 90px;
 }
 /*
- * 右眼在右边（废话）
+ * 右眼
  */
 .eye.right{
   left: 50%;
@@ -183,6 +184,6 @@
  * 好了，这只皮卡丘送给你
  */
 `
-  writeCode('',code)
+  writeCode('', code)
 
 }.call()
